@@ -7,8 +7,9 @@ function fetchBooks() {
             const booksDiv = document.getElementById('books');
             booksDiv.innerHTML = books.map(book => `
                 <div>
-                    <strong>${book.title}</strong> by ${book.author} (${book.published_year})
+                    <strong>${book.title}</strong> by ${book.author} (${book.published_year}) K: ${book.kstatus} (${book.krates}), J: ${book.jstatus} (${book.jrates}), note: ${book.notes}
                     <button onclick="deleteBook(${book.id})">Delete</button>
+                    <button onclick="editBook(${book.id})">Edit</button>
                 </div>
             `).join('');
         });
@@ -35,6 +36,12 @@ function addBook() {
 function deleteBook(id) {
     fetch(`${API_URL}/${id}`, {
         method: 'DELETE'
+    }).then(() => fetchBooks());
+}
+
+function editBook(id) {
+    fetch(`${API_URL}/${id}`, {
+        method: 'PUT'
     }).then(() => fetchBooks());
 }
 
