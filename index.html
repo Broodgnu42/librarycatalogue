@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Library Catalog</h1>
     <button id="download-db-btn">Download Database</button>
+    <h1>Library Catalog</h1>
     <div id="form">
         <div>
             <input type="text" id="title" placeholder="Title">
@@ -17,7 +17,7 @@
             <input type="number" id="year" placeholder="Published Year">
         </div>
         <div>
-            <p>Kayla: style="display: inline-block;"</p>
+            <p style="display: inline-block;">Kayla: </p>
             <select id="kstatus">
                 <option value="" disabled selected>Status</option>
                 <option value="active">Unread</option>
@@ -27,7 +27,7 @@
             <input type="number" id="krates" placeholder="Rating">
         </div>
         <div>
-            <p>Jock: style="display: inline-block;"</p>
+            <p style="display: inline-block;">Jock: </p>
             <select id="jstatus">
                 <option value="" disabled selected>Status</option>
                 <option value="active">Unread</option>
@@ -36,7 +36,7 @@
             </select>
             <input type="number" id="jrates" placeholder="Rating">
         </div>
-        <textarea id="notes" placeholder="Notes"></textarea>
+        <div><textarea id="notes" placeholder="Notes"></textarea></div>
         <button onclick="addBook()">Add Book</button>
     </div>
     <h2>Books</h2>
