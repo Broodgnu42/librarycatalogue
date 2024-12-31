@@ -19,11 +19,16 @@ function addBook() {
     const author = document.getElementById('author').value;
     const genre = document.getElementById('genre').value;
     const year = document.getElementById('year').value;
+    const kstatus = document.getElementById('kstatus').value;
+    const krates = document.getElementById('krates').value;
+    const jstatus = document.getElementById('jstatus').value;
+    const jrates = document.getElementById('jrates').value;
+    const notes = document.getElementById('notes').value;
 
     fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, author, genre, published_year: year })
+        body: JSON.stringify({ title, author, genre, published_year: year, kstatus, krates, jstatus, jrates, notes })
     }).then(() => fetchBooks());
 }
 
