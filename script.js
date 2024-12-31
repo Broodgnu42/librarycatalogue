@@ -47,10 +47,13 @@ function fetchBooks() {
             booksDiv.innerHTML = filteredBooks.map(book => `
                 <div>
                     <strong>${book.title}</strong> by ${book.author} (${book.published_year}) 
-                    K: ${book.kstatus} (${book.krates}), 
-                    J: ${book.jstatus} (${book.jrates}), note: ${book.notes}
                     <button onclick="deleteBook(${book.id})">Delete</button>
                     <button onclick="editBook(${book.id})">Edit</button>
+                    <div>
+                    K: ${book.kstatus} (${book.krates}), 
+                    J: ${book.jstatus} (${book.jrates})
+                    </div>
+                    ${book.notes}
                 </div>
             `).join('');
         });
