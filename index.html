@@ -17,22 +17,26 @@
             <input type="number" id="year" placeholder="Published Year">
         </div>
         <div>
+            <p>Kayla: style="display: inline-block;"</p>
             <select id="kstatus">
-                <option value="" disabled selected>Kayla Status</option>
+                <option value="" disabled selected>Status</option>
                 <option value="active">Unread</option>
                 <option value="inactive">Reading</option>
                 <option value="suspended">Finished</option>
             </select>
-            <input type="number" id="krates" placeholder="Kayla Rating">
-            <select id="jstatus">
-                <option value="" disabled selected>Jock Status</option>
-                <option value="active">Unread</option>
-                <option value="inactive">Reading</option>
-                <option value="suspended">Finished</option>
-            </select>
-            <input type="number" id="jrates" placeholder="Jock Rating">
+            <input type="number" id="krates" placeholder="Rating">
         </div>
-        <div><input type="text" id="notes" placeholder="Notes"></div>
+        <div>
+            <p>Jock: style="display: inline-block;"</p>
+            <select id="jstatus">
+                <option value="" disabled selected>Status</option>
+                <option value="active">Unread</option>
+                <option value="inactive">Reading</option>
+                <option value="suspended">Finished</option>
+            </select>
+            <input type="number" id="jrates" placeholder="Rating">
+        </div>
+        <textarea id="notes" placeholder="Notes"></textarea>
         <button onclick="addBook()">Add Book</button>
     </div>
     <h2>Books</h2>
