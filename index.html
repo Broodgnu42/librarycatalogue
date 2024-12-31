@@ -44,12 +44,10 @@
     <!-- Search Bar -->
     <input type="text" id="searchBar" placeholder="Search for a book..." oninput="fetchBooks()">
 
-    <!-- Category Filter (example) -->
+    <!-- Category Filter -->
     <select id="categoryFilter" onchange="fetchBooks()">
         <option value="">All Categories</option>
-        <option value="fiction">Fiction</option>
-        <option value="non-fiction">Non-Fiction</option>
-        <option value="science">Science</option>
+        <!-- Dynamic genres will be inserted here -->
     </select>
 
     <!-- Sorting Options -->
