@@ -1,4 +1,4 @@
-const API_URL = 'https://librarybackend-1ajw.onrender.com';
+const API_URL = 'https://librarybackend-1ajw.onrender.com/books';
 
 function fetchBooks() {
     fetch(API_URL)
