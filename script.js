@@ -49,13 +49,12 @@ function fetchBooks() {
                 return `
                     <div class="${backgroundColorClass}">
                         <div class="book-header">
-                            <p style="font-size:2em; display:inline-block; ">${book.title}</p>
+                            <p style="font-size:2em; display:inline-block; ">${book.title}</p> ${book.author} ${book.published_year}
                             <div class="button-container">
                                 <button onclick="deleteBook(${book.id})">Delete</button>
                                 <button onclick="editBook(${book.id})">Edit</button>
                             </div>
                         </div>
-                        <div>${book.author} (${book.published_year})</div> 
                         <div>
                             K: ${book.kstatus} (${book.krates}), 
                             J: ${book.jstatus} (${book.jrates})
