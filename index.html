@@ -41,7 +41,27 @@
         <button id="commit-button" style="display:none;">Commit Changes</button>
     </div>
     <h2>Books</h2>
+    <!-- Search Bar -->
+    <input type="text" id="searchBar" placeholder="Search for a book..." oninput="fetchBooks()">
+
+    <!-- Category Filter (example) -->
+    <select id="categoryFilter" onchange="fetchBooks()">
+        <option value="">All Categories</option>
+        <option value="fiction">Fiction</option>
+        <option value="non-fiction">Non-Fiction</option>
+        <option value="science">Science</option>
+    </select>
+
+    <!-- Sorting Options -->
+    <select id="sortBy" onchange="fetchBooks()">
+        <option value="title">Sort by Title</option>
+        <option value="author">Sort by Author</option>
+        <option value="published_year">Sort by Year</option>
+    </select>
+
+    <!-- Books List -->
     <div id="books"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
