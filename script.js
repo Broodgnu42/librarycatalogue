@@ -34,3 +34,16 @@ function deleteBook(id) {
 }
 
 document.addEventListener('DOMContentLoaded', fetchBooks);
+
+document.getElementById('download-db-btn').addEventListener('click', function() {
+    // Trigger the download of the database
+    const API_URL = 'https://librarybackend-1ajw.onrender.com/download-db';
+    
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = API_URL;
+    link.download = 'library.db';  // Optional: Specify a custom filename for the download
+    
+    // Trigger the link click to initiate download
+    link.click();
+});
