@@ -53,6 +53,24 @@ function fetchBooks() {
         });
 }
 
+// Function to populate the category filter dynamically
+function populateCategoryFilter(books) {
+    const categoryFilter = document.getElementById('categoryFilter');
+    
+    // Get all unique categories from the books
+    const categories = [...new Set(books.map(book => book.category))];
+
+    // Clear existing options
+    categoryFilter.innerHTML = '<option value="">All Categories</option>';
+
+    // Add options for each unique category
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category;
+        categoryFilter.appendChild(option);
+    });
+}
 
 function addBook() {
     const title = document.getElementById('title').value;
