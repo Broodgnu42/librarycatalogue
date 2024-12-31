@@ -78,7 +78,13 @@ function populateCategoryFilter(books) {
     const categories = [...new Set(books.map(book => book.genre))];
 
     // Clear existing options
-    categoryFilter.innerHTML = '<option value="">All Categories</option>';
+    categoryFilter.innerHTML = '';
+
+    // Add the "All Categories" option
+    const allOption = document.createElement('option');
+    allOption.value = '';
+    allOption.textContent = 'All Genres';
+    categoryFilter.appendChild(allOption);
 
     // Add options for each unique category
     categories.forEach(category => {
