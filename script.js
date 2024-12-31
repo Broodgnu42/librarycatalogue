@@ -9,6 +9,9 @@ function fetchBooks() {
     fetch(API_URL)
         .then(response => response.json())
         .then(books => {
+            // Dynamically populate the category filter
+            populateCategoryFilter(books);
+
             // Filter books based on search query and category
             let filteredBooks = books;
 
@@ -71,6 +74,7 @@ function populateCategoryFilter(books) {
         categoryFilter.appendChild(option);
     });
 }
+
 
 function addBook() {
     const title = document.getElementById('title').value;
