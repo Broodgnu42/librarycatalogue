@@ -113,7 +113,10 @@ function addBook() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, author, genre, published_year: year, location, kstatus, krates, jstatus, jrates, notes })
-    }).then(() => fetchBooks());
+    }).then(() => {
+        alert('Book added successfully!');
+        fetchBooks();  // Refetch the list of books to reflect the changes
+    })
 }
 
 function deleteBook(id) {
