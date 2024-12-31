@@ -14,3 +14,17 @@ body {
 #books {
     margin-top: 20px;
 }
+
+.white {
+    background-color: white;
+}
+
+.lightgrey {
+    background-color: lightgrey;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Adds space between the buttons */
+}
