@@ -40,9 +40,57 @@ function deleteBook(id) {
 }
 
 function editBook(id) {
+    // Fetch the current data of the book
+    fetch(`${API_URL}/${id}`)
+        .then(response => response.json())
+        .then(data => {
+            // Populate the input fields with the current data
+            document.getElementById('title').value = data.title;
+            document.getElementById('author').value = data.author;
+            document.getElementById('genre').value = data.genre;
+            document.getElementById('year').value = data.published_year;
+            document.getElementById('krates').value = data.krates;
+            document.getElementById('jrates').value = data.jrates;
+            document.getElementById('kstatus').value = data.kstatus;
+            document.getElementById('jstatus').value = data.jstatus;
+            document.getElementById('notes').value = data.notes;
+            
+            // Update the form to show a commit button
+            const commitButton = document.getElementById('commit-button');
+            commitButton.style.display = 'inline-block';
+            commitButton.onclick = function() {
+                commitChanges(id);
+            };
+        })
+        .catch(error => console.error('Error fetching book data:', error));
+}
+
+function commitChanges(id) {
+    const updatedBook = {
+        title: document.getElementById('title').value,
+        author: document.getElementById('author').value,
+        genre: document.getElementById('genre').value,
+        published_year: document.getElementById('year').value,
+        krates: document.getElementById('krates').value,
+        jrates: document.getElementById('jrates').value,
+        kstatus: document.getElementById('kstatus').value,
+        jstatus: document.getElementById('jstatus').value,
+        notes: document.getElementById('notes').value
+    };
+
+    // Send the updated data to the server
     fetch(`${API_URL}/${id}`, {
-        method: 'PUT'
-    }).then(() => fetchBooks());
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedBook)
+    })
+    .then(() => {
+        alert('Book updated successfully!');
+        fetchBooks();  // Refetch the list of books to reflect the changes
+    })
+    .catch(error => console.error('Error updating book:', error));
 }
 
 document.addEventListener('DOMContentLoaded', fetchBooks);
