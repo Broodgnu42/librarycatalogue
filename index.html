@@ -17,9 +17,19 @@
             <input type="number" id="year" placeholder="Published Year">
         </div>
         <div>
-            <input type="text" id="kstatus" placeholder="Kayla Status">
+            <select id="kstatus">
+                <option value="" disabled selected>Kayla Status</option>
+                <option value="active">Unread</option>
+                <option value="inactive">Reading</option>
+                <option value="suspended">Finished</option>
+            </select>
             <input type="number" id="krates" placeholder="Kayla Rating">
-            <input type="text" id="jstatus" placeholder="Jock Status">
+            <select id="jstatus">
+                <option value="" disabled selected>Jock Status</option>
+                <option value="active">Unread</option>
+                <option value="inactive">Reading</option>
+                <option value="suspended">Finished</option>
+            </select>
             <input type="number" id="jrates" placeholder="Jock Rating">
         </div>
         <div><input type="text" id="notes" placeholder="Notes"></div>
