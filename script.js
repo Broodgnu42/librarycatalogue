@@ -1,19 +1,58 @@
 const API_URL = 'https://librarybackend-1ajw.onrender.com/books';
 
 function fetchBooks() {
+    const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+    const selectedCategory = document.getElementById('categoryFilter').value;
+    const sortBy = document.getElementById('sortBy').value;
+
+    // Fetch the books from the API
     fetch(API_URL)
         .then(response => response.json())
         .then(books => {
+            // Filter books based on search query and category
+            let filteredBooks = books;
+
+            // Search Filter
+            if (searchQuery) {
+                filteredBooks = filteredBooks.filter(book =>
+                    book.title.toLowerCase().includes(searchQuery) ||
+                    book.author.toLowerCase().includes(searchQuery)
+                );
+            }
+
+            // Category Filter
+            if (selectedCategory) {
+                filteredBooks = filteredBooks.filter(book =>
+                    book.category && book.category.toLowerCase() === selectedCategory.toLowerCase()
+                );
+            }
+
+            // Sorting
+            filteredBooks = filteredBooks.sort((a, b) => {
+                if (sortBy === 'title') {
+                    return a.title.localeCompare(b.title);
+                } else if (sortBy === 'author') {
+                    return a.author.localeCompare(b.author);
+                } else if (sortBy === 'published_year') {
+                    return a.published_year - b.published_year;
+                }
+                return 0;
+            });
+
+            // Render the filtered and sorted books
             const booksDiv = document.getElementById('books');
-            booksDiv.innerHTML = books.map(book => `
+            booksDiv.innerHTML = filteredBooks.map(book => `
                 <div>
-                    <strong>${book.title}</strong> by ${book.author} (${book.published_year}) K: ${book.kstatus} (${book.krates}), J: ${book.jstatus} (${book.jrates}), note: ${book.notes}
+                    <strong>${book.title}</strong> by ${book.author} (${book.published_year}) 
+                    K: ${book.kstatus} (${book.krates}), 
+                    J: ${book.jstatus} (${book.jrates}), note: ${book.notes}
                     <button onclick="deleteBook(${book.id})">Delete</button>
                     <button onclick="editBook(${book.id})">Edit</button>
                 </div>
             `).join('');
         });
 }
+
 
 function addBook() {
     const title = document.getElementById('title').value;
