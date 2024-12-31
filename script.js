@@ -44,18 +44,25 @@ function fetchBooks() {
 
             // Render the filtered and sorted books
             const booksDiv = document.getElementById('books');
-            booksDiv.innerHTML = filteredBooks.map(book => `
-                <div>
-                    <strong>${book.title}</strong> by ${book.author} (${book.published_year}) 
-                    <button onclick="deleteBook(${book.id})">Delete</button>
-                    <button onclick="editBook(${book.id})">Edit</button>
-                    <div>
-                    K: ${book.kstatus} (${book.krates}), 
-                    J: ${book.jstatus} (${book.jrates})
+            booksDiv.innerHTML = filteredBooks.map((book, index) => {
+                const backgroundColorClass = index % 2 === 0 ? 'white' : 'lightgrey'; // Alternating colors
+                return `
+                    <div class="${backgroundColorClass}">
+                        <strong>${book.title}</strong>
+                        <div>${book.author} (${book.published_year})</div> 
+                        <div class="button-container">
+                            <button onclick="deleteBook(${book.id})">Delete</button>
+                            <button onclick="editBook(${book.id})">Edit</button>
+                        </div>
+                        <div>
+                            K: ${book.kstatus} (${book.krates}), 
+                            J: ${book.jstatus} (${book.jrates})
+                        </div>
+                        ${book.notes}
                     </div>
-                    ${book.notes}
-                </div>
-            `).join('');
+                `;
+            }).join('');
+
         });
 }
 
