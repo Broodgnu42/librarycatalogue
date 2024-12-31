@@ -94,8 +94,29 @@ function populateCategoryFilter(books) {
         option.textContent = category;
         categoryFilter.appendChild(option);
     });
+
+    categoryFilter.addEventListener('change', () => {
+        const selectedCategory = categoryFilter.value;
+        filterBooksByCategory(books, selectedCategory);
+    });
 }
 
+function filterBooksByCategory(books, category) {
+    const bookList = document.getElementById('bookList'); // Assume this is where books are displayed
+    bookList.innerHTML = ''; // Clear the list
+
+    // Filter books based on the selected category
+    const filteredBooks = category === '' 
+        ? books // Show all books when category is empty
+        : books.filter(book => book.genre === category);
+
+    // Render filtered books
+    filteredBooks.forEach(book => {
+        const bookItem = document.createElement('div');
+        bookItem.textContent = `${book.title} by ${book.author} (${book.genre})`;
+        bookList.appendChild(bookItem);
+    });
+}
 
 function addBook() {
     const title = document.getElementById('title').value;
