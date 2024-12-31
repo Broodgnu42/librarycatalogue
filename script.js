@@ -48,7 +48,7 @@ function fetchBooks() {
                 const backgroundColorClass = index % 2 === 0 ? 'white' : 'lightgrey'; // Alternating colors
                 return `
                     <div class="${backgroundColorClass}">
-                        <strong>${book.title}</strong>
+                        <h5>${book.title}</h5>
                         <div>${book.author} (${book.published_year})</div> 
                         <div class="button-container">
                             <button onclick="deleteBook(${book.id})">Delete</button>
