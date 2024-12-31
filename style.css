@@ -23,8 +23,13 @@ body {
     background-color: lightgrey;
 }
 
+.book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .button-container {
     display: flex;
-    justify-content: flex-end;
     gap: 10px; /* Adds space between the buttons */
 }
