@@ -61,7 +61,7 @@ function populateCategoryFilter(books) {
     const categoryFilter = document.getElementById('categoryFilter');
     
     // Get all unique categories from the books
-    const categories = [...new Set(books.map(book => book.category))];
+    const categories = [...new Set(books.map(book => book.genre))];
 
     // Clear existing options
     categoryFilter.innerHTML = '<option value="">All Categories</option>';
