@@ -26,7 +26,7 @@ function fetchBooks() {
             // Category Filter
             if (selectedCategory) {
                 filteredBooks = filteredBooks.filter(book =>
-                    book.category && book.category.toLowerCase() === selectedCategory.toLowerCase()
+                    book.genre && book.genre.toLowerCase() === selectedCategory.toLowerCase()
                 );
             }
 
