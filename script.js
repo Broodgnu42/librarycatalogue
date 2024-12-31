@@ -34,9 +34,15 @@ function addBook() {
 }
 
 function deleteBook(id) {
-    fetch(`${API_URL}/${id}`, {
-        method: 'DELETE'
-    }).then(() => fetchBooks());
+    const userConfirmed = confirm("Are you sure you want to delete this book?");
+    if (userConfirmed) {
+        fetch(`${API_URL}/${id}`, {
+            method: 'DELETE'
+        }).then(() => fetchBooks())
+          .catch(error => console.error('Error deleting the book:', error));
+    } else {
+        console.log("Delete action canceled.");
+    }
 }
 
 function editBook(id) {
