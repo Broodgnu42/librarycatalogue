@@ -48,11 +48,13 @@ function fetchBooks() {
                 const backgroundColorClass = index % 2 === 0 ? 'white' : 'lightgrey'; // Alternating colors
                 return `
                     <div class="${backgroundColorClass}">
-                        <div class="button-container">
-                            <button onclick="deleteBook(${book.id})">Delete</button>
-                            <button onclick="editBook(${book.id})">Edit</button>
+                        <div class="book-header">
+                            <p style="font-size:2em; display:inline-block; ">${book.title}</p>
+                            <div class="button-container">
+                                <button onclick="deleteBook(${book.id})">Delete</button>
+                                <button onclick="editBook(${book.id})">Edit</button>
+                            </div>
                         </div>
-                        <p style="font-size:2em; ">${book.title}</p>
                         <div>${book.author} (${book.published_year})</div> 
                         <div>
                             K: ${book.kstatus} (${book.krates}), 
