@@ -58,6 +58,7 @@ function fetchBooks() {
                                 <button onclick="editBook(${book.id})">Edit</button>
                             </div>
                         </div>
+                        ${book.location}
                         <div>
                             K: ${book.kstatus} (${book.krates}), 
                             J: ${book.jstatus} (${book.jrates})
@@ -101,6 +102,7 @@ function addBook() {
     const author = document.getElementById('author').value;
     const genre = document.getElementById('genre').value;
     const year = document.getElementById('year').value;
+    const location = document.getElementById('location').value;
     const kstatus = document.getElementById('kstatus').value;
     const krates = document.getElementById('krates').value;
     const jstatus = document.getElementById('jstatus').value;
@@ -110,7 +112,7 @@ function addBook() {
     fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, author, genre, published_year: year, kstatus, krates, jstatus, jrates, notes })
+        body: JSON.stringify({ title, author, genre, published_year: year, location, kstatus, krates, jstatus, jrates, notes })
     }).then(() => fetchBooks());
 }
 
@@ -136,6 +138,7 @@ function editBook(id) {
             document.getElementById('author').value = data.author;
             document.getElementById('genre').value = data.genre;
             document.getElementById('year').value = data.published_year;
+            document.getElementById('location').value = data.location;
             document.getElementById('krates').value = data.krates;
             document.getElementById('jrates').value = data.jrates;
             document.getElementById('kstatus').value = data.kstatus;
@@ -158,6 +161,7 @@ function commitChanges(id) {
         author: document.getElementById('author').value,
         genre: document.getElementById('genre').value,
         published_year: document.getElementById('year').value,
+        location: document.getElementById('location').value,
         krates: document.getElementById('krates').value,
         jrates: document.getElementById('jrates').value,
         kstatus: document.getElementById('kstatus').value,
