@@ -51,7 +51,7 @@ function fetchBooks() {
                         <div class="book-header">
                             <div class="book-title">
                                 <p style="font-size: 2em; display: inline-block; margin: 0;">${book.title}</p>
-                                <span class="book-meta">${book.author}, ${book.published_year}</span>
+                                <span class="book-meta">${book.author}    ${book.published_year}</span>
                             </div>
                             <div class="button-container">
                                 <button onclick="deleteBook(${book.id})">Delete</button>
